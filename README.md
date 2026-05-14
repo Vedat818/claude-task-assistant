@@ -44,13 +44,14 @@ The installer will ask:
 All settings are in `config.sh`:
 
 ```bash
-# Root directory where new projects will be scaffolded via new-projects.md
+# Where new projects from new-projects.md will be created
+# e.g. approving "my-app" creates ~/Projects/my-app/ here
 PROJECTS_DIR="$HOME/Projects"
 
-# Projects to track — use absolute paths
+# Your existing projects to track — can be anywhere on your system
 PROJECTS=(
-  "$HOME/Projects/my-app"
-  "$HOME/Projects/another-project"
+  "$HOME/work/my-app"
+  "$HOME/Desktop/side-project"
 )
 
 # Default Claude model — used when tasks.md doesn't specify one
@@ -60,7 +61,15 @@ DEFAULT_MODEL="haiku"
 ENABLE_NOTIFICATIONS=true
 ```
 
-**Adding a new project:** append its absolute path to the `PROJECTS` array and add a `tasks.md` to the project root.
+### PROJECTS vs PROJECTS_DIR
+
+- **`PROJECTS`** — projects you already have. Add any project here regardless of where it lives on your system. The system will scan each one for `tasks.md`.
+- **`PROJECTS_DIR`** — only used by `new-projects.md`. When you approve a new project idea, it gets created here and automatically added to `PROJECTS` — no manual step needed.
+
+### Tracking an existing project
+
+1. Add its absolute path to the `PROJECTS` array in `config.sh`
+2. Add a `tasks.md` to the project root (see [tasks.md Format](#tasksmd-format))
 
 ---
 

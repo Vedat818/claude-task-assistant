@@ -228,16 +228,21 @@ Artik proje normal akisa dahil olur ve `tasks.md`'sine gorev yazabilirsin.
 
 ---
 
+## PROJECTS ve PROJECTS_DIR Farkı
+
+- **`PROJECTS`** — halihazırda sahip olduğun projelerin listesi. Bilgisayarında nerede olursa olsun eklenebilir. Sistem her birinin içindeki `tasks.md`'yi tarar.
+- **`PROJECTS_DIR`** — sadece `new-projects.md` tarafından kullanılır. Bir proje fikrini onayladığında yeni proje buraya oluşturulur ve otomatik olarak `PROJECTS` listesine eklenir — elle bir şey yapman gerekmez.
+
 ## Mevcut Projeyi Sisteme Eklemek
 
-1. Projenin klasorune `tasks.md` ekle (sablonu kopyala)
-2. `config.sh` dosyasini ac, `PROJECTS` listesine yeni yolu ekle:
+1. Projenin klasörüne `tasks.md` ekle
+2. `config.sh` dosyasını aç, `PROJECTS` listesine projenin yolunu ekle:
 
 ```bash
 PROJECTS=(
-  "~/Projeler/proje-adi"
-  "~/Projeler/baska-proje"
-  "~/Projeler/yeni-proje"   # <-- buraya ekle
+  "$HOME/work/mevcut-proje"
+  "$HOME/Desktop/baska-proje"
+  "$HOME/herhangi/bir/yol"   # <-- buraya ekle
 )
 ```
 
