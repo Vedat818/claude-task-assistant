@@ -2,16 +2,16 @@
 
 A cron-based automation that scans `tasks.md` files in your projects, generates actionable suggestions via Claude CLI, and applies approved tasks automatically.
 
-Every morning:
-1. Applies tasks you approved the day before (with a git backup)
+On a schedule you choose, it:
+1. Applies tasks you previously approved (with a git backup)
 2. Generates suggestions for new tasks
-3. Sends a Mac notification
+3. Sends a desktop notification
 
 ## Requirements
 
-- macOS
 - [Claude CLI](https://claude.ai/download) installed and authenticated
-- `crontab` access
+- macOS, Linux, or Windows (WSL)
+- `crontab` access (optional — can also run manually)
 
 ## Setup
 
@@ -56,7 +56,7 @@ bash ~/claude-task-assistant/scripts/run.sh --dry-run # preview what would happe
 
 ## Technologies
 
-Bash · Python 3 · Claude CLI · macOS cron + osascript
+Bash · Python 3 · Claude CLI · cron · osascript / notify-send
 
 ---
 
