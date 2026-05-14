@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Directory where new projects will be created (set your own path)
-PROJECTS_DIR="$HOME/Projeler"
+PROJECTS_DIR="$HOME/Projects"
 
 # Projects to track — use absolute paths
 PROJECTS=(
-  # "$HOME/Projeler/project-name"
+  # "$HOME/Projects/project-name"
 )
 
 # Default model (can be overridden per project via tasks.md)
