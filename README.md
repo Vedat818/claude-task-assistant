@@ -17,7 +17,7 @@ Every morning:
 
 **1. Clone the repo:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/claude-task-assistant.git ~/claude-task-assistant
+git clone https://github.com/Vedat818/claude-task-assistant.git ~/claude-task-assistant
 cd ~/claude-task-assistant
 ```
 
