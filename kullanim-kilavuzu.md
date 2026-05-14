@@ -2,10 +2,10 @@
 
 ## Ne Yapar?
 
-Her sabah 06:00'da otomatik olarak:
+Belirlediğin saatte otomatik olarak:
 1. Daha önce onayladığın görevleri uygular (git backup alarak)
 2. Yeni görevlerin için öneriler üretir
-3. Mac bildirimi gönderir (başarı ve hata durumlarında ayrı ayrı)
+3. Masaüstü bildirimi gönderir (başarı ve hata durumlarında ayrı ayrı)
 
 ---
 
@@ -19,9 +19,9 @@ Her sabah 06:00'da otomatik olarak:
 - [ ] Login butonunun rengini kırmızı yap
 ```
 
-Kaydet. Bitti. Sistem gece 06:00'da öneriler üretecek.
+Kaydet. Bitti. Sistem bir sonraki çalışmada öneriler üretecek.
 
-### 2. Sabah bildirimi geldiğinde
+### 2. Bildirim geldiğinde
 
 `tasks.md` dosyasını aç. Claude'un ürettiği öneriyi göreceksin:
 
@@ -53,9 +53,9 @@ Sistem bir sonraki çalışmada cevabını okuyup yeni öneri üretir.
   - Answer:
 ```
 
-`Answer:` satırının sonuna cevabını yaz, ertesi gün öneri gelir.
+`Answer:` satırının sonuna cevabını yaz, bir sonraki çalışmada öneri gelir.
 
-### 3. Ertesi sabah
+### 3. Bir sonraki çalışmada
 
 Onayladıkların uygulanmış olur, `tasks.md`'de `[x]` ile kapanmış görürsün.
 
@@ -104,13 +104,11 @@ Her görev öncesi otomatik backup commit atılır, bu yüzden her zaman geri d�
 
 ## Manuel Çalıştırma
 
-Cron'u beklemeden çalıştırmak istersen terminalde `gorev` yaz:
+Cron'u beklemeden çalıştırmak istersen:
 
 ```bash
-gorev
+bash ~/claude-task-assistant/scripts/run.sh
 ```
-
-Bu alias `~/.zshrc`'de tanimli ve `run.sh`'i calistirir (once uygula, sonra oner).
 
 Daha spesifik komutlar:
 
@@ -203,7 +201,7 @@ Bir sonraki calistirmada Claude geri bildirimini okur, eski oneriyi siler ve yen
 
 - **Lock file:** Aynı anda birden fazla `run.sh` çalışmasını engeller. Eğer önceki süreç çökmüşse lock otomatik temizlenir.
 - **Git backup:** Her görev uygulanmadan önce otomatik backup commit atılır.
-- **Hata bildirimi:** Claude komutu başarısız olursa Mac bildirimi ile uyarılırsın.
+- **Hata bildirimi:** Claude komutu başarısız olursa masaüstü bildirimi ile uyarılırsın.
 - **Log rotasyonu:** 30 günden eski loglar otomatik silinir.
 
 ---
