@@ -44,7 +44,7 @@ Kaydet. Bitti. Sistem bir sonraki çalışmada öneriler üretecek.
 ```
 Sistem bir sonraki çalışmada cevabını okuyup yeni öneri üretir.
 
-**Tamamen farklı bir şey istiyorsan:** Satırı silip görevi yeniden yaz, sistem ertesi gün yeni öneri üretir.
+**Tamamen farklı bir şey istiyorsan:** Satırı silip görevi yeniden yaz, sistem bir sonraki çalışmada yeni öneri üretir.
 
 **Görev belirsizse** Claude soru sorar:
 ```
@@ -162,41 +162,6 @@ Claude sonraki calismalarda bu dosyayi okuyarak projeyi daha iyi anlar ve daha i
 
 ---
 
-## Soru-Cevap ve Geri Bildirim Akisi
-
-### Claude soru sordugunda
-
-Gorev belirsizse Claude direkt oneri uretmek yerine soru sorar:
-
-```
-- [ ] Performansi iyilestir
-  - Question: Hangi sayfada, hangi metrik? (yukleme suresi mi, animasyon mu?)
-  - Answer:
-```
-
-`Answer:` satirinin sonuna cevabinizi yazin ve kaydedin:
-
-```
-  - Answer: Ana sayfa, ilk yukleme suresi 3 saniyeden fazla
-```
-
-Bir sonraki calistirmada Claude cevabinizi okuyup somut oneri uretir.
-
-### Oneriyi begenmediginde
-
-Claude'un onerisine katilmiyorsan veya farkli bir yon istiyorsan, onerinin altina `Answer:` satiri ekle:
-
-```
-- [ ] Tasarimi degistirmek istiyorum
-  - Suggestion: CSS degiskenlerini degistir...
-  - Approve: [ ]
-  - Answer: secenek 2 istiyorum ama renkleri ben secmek istiyorum
-```
-
-Bir sonraki calistirmada Claude geri bildirimini okur, eski oneriyi siler ve yeni bir oneri uretir. Bu donguyu istedigin kadar tekrarlayabilirsin.
-
----
-
 ## Güvenlik Özellikleri
 
 - **Lock file:** Aynı anda birden fazla `run.sh` çalışmasını engeller. Eğer önceki süreç çökmüşse lock otomatik temizlenir.
@@ -270,9 +235,8 @@ Artik proje normal akisa dahil olur ve `tasks.md`'sine gorev yazabilirsin.
 
 ```bash
 PROJECTS=(
-  "~/Projeler/pomodoro-app"
-  "~/Projeler/projeksiyon"
-  "~/Projeler/vidscript"
+  "~/Projeler/proje-adi"
+  "~/Projeler/baska-proje"
   "~/Projeler/yeni-proje"   # <-- buraya ekle
 )
 ```
