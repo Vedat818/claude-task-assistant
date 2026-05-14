@@ -44,7 +44,7 @@ The installer will ask:
 All settings are in `config.sh`:
 
 ```bash
-# Root directory where new projects will be scaffolded via ideas.md
+# Root directory where new projects will be scaffolded via new-projects.md
 PROJECTS_DIR="$HOME/Projects"
 
 # Projects to track — use absolute paths
@@ -148,9 +148,9 @@ Fill in the `Answer:` line and Claude will generate a concrete suggestion on the
 
 ---
 
-## ideas.md — Build New Projects from Scratch
+## new-projects.md — Build New Projects from Scratch
 
-`ideas.md` (in the root of this repo) lets you create brand-new projects using the same workflow.
+`new-projects.md` (in the root of this repo) lets you create brand-new projects using the same workflow.
 
 **1. Write an idea:**
 ```

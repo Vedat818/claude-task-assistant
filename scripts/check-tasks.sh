@@ -160,8 +160,8 @@ ONLY update tasks.md, write nothing else." \
   fi
 done
 
-# === IDEAS.MD: Generate suggestions for new project ideas ===
-IDEAS_FILE="$(dirname "$0")/../ideas.md"
+# === NEW-PROJECTS.MD: Generate suggestions for new project ideas ===
+IDEAS_FILE="$(dirname "$0")/../new-projects.md"
 
 if [ -f "$IDEAS_FILE" ] && grep -q "^- \[ \]" "$IDEAS_FILE" 2>/dev/null; then
   # Check if any idea is missing a suggestion
@@ -193,21 +193,21 @@ PYEOF
     IDEAS_MODEL=$(grep -m1 "^model:" "$IDEAS_FILE" | awk '{print $2}')
     [ -z "$IDEAS_MODEL" ] && IDEAS_MODEL="$DEFAULT_MODEL"
 
-    echo "[ideas] generating suggestions (model: $IDEAS_MODEL)..." >> "$LOG"
+    echo "[new-projects] generating suggestions (model: $IDEAS_MODEL)..." >> "$LOG"
 
     if [ "$DRY_RUN" = true ]; then
-      echo "[DRY RUN] [ideas] would run claude --model $IDEAS_MODEL to generate suggestions" >> "$LOG"
-      echo "[DRY RUN] [ideas] would generate suggestions (model: $IDEAS_MODEL)"
+      echo "[DRY RUN] [new-projects] would run claude --model $IDEAS_MODEL to generate suggestions" >> "$LOG"
+      echo "[DRY RUN] [new-projects] would generate suggestions (model: $IDEAS_MODEL)"
       suggestion_count=$((suggestion_count + 1))
     else
       IDEAS_CONTENT=$(cat "$IDEAS_FILE")
       if (cd "$(dirname "$0")" && \
       timeout 600 claude --model "$IDEAS_MODEL" --dangerously-skip-permissions --max-turns 10 -p \
-"ideas.md content:
+"new-projects.md content:
 $IDEAS_CONTENT
 
-This file contains ideas for projects to build from scratch.
-For ideas starting with '- [ ]' that don't have '  - Suggestion:' or '  - Question:' below them:
+This file contains new projects to build from scratch.
+For entries starting with '- [ ]' that don't have '  - Suggestion:' or '  - Question:' below them:
 
 1. Understand the project idea description
 2. Write a concrete plan under these headings:
@@ -218,7 +218,7 @@ For ideas starting with '- [ ]' that don't have '  - Suggestion:' or '  - Questi
    - STARTING COMMANDS: Commands needed to bootstrap the project
 3. If the idea is unclear, write '  - Question:' instead and ask the user for clarification
 
-Update ideas.md in this format (ONLY add to ideas missing suggestions, don't touch others):
+Update new-projects.md in this format (ONLY add to ideas missing suggestions, don't touch others):
 
 - [ ] project-name: description
   - Suggestion:
@@ -234,12 +234,12 @@ For an unclear idea:
   - Question: what exactly do you want?
   - Answer:
 
-ONLY update ideas.md, write nothing else." \
+ONLY update new-projects.md, write nothing else." \
       >> "$LOG" 2>&1); then
-        echo "[ideas] done" >> "$LOG"
+        echo "[new-projects] done" >> "$LOG"
         suggestion_count=$((suggestion_count + 1))
       else
-        echo "[ideas] ERROR: claude command failed (exit code: $?)" >> "$LOG"
+        echo "[new-projects] ERROR: claude command failed (exit code: $?)" >> "$LOG"
         error_count=$((error_count + 1))
       fi
     fi

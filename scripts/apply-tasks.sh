@@ -94,9 +94,9 @@ ONLY apply the tasks, do not write unnecessary explanations." \
   fi
 done
 
-# === IDEAS.MD: Create approved project ideas ===
+# === NEW-PROJECTS.MD: Create approved project ideas ===
 SCRIPT_DIR="$(dirname "$0")"
-IDEAS_FILE="$SCRIPT_DIR/../ideas.md"
+IDEAS_FILE="$SCRIPT_DIR/../new-projects.md"
 CONFIG_FILE="$SCRIPT_DIR/../config.sh"
 
 if [ -f "$IDEAS_FILE" ] && grep -q "  - Approve: \[x\]" "$IDEAS_FILE" 2>/dev/null; then
@@ -134,11 +134,11 @@ PYEOF
     [ -z "$PROJECT_SLUG" ] && continue
     PROJECT_PATH="$PROJECTS_DIR/$PROJECT_SLUG"
 
-    echo "[ideas] creating project '$PROJECT_SLUG'..." >> "$LOG"
+    echo "[new-projects] creating project '$PROJECT_SLUG'..." >> "$LOG"
 
     if [ "$DRY_RUN" = true ]; then
-      echo "[DRY RUN] [ideas] would create $PROJECT_PATH (model: $IDEAS_MODEL)" >> "$LOG"
-      echo "[DRY RUN] [ideas] would create project '$PROJECT_SLUG' (model: $IDEAS_MODEL)"
+      echo "[DRY RUN] [new-projects] would create $PROJECT_PATH (model: $IDEAS_MODEL)" >> "$LOG"
+      echo "[DRY RUN] [new-projects] would create project '$PROJECT_SLUG' (model: $IDEAS_MODEL)"
       applied_count=$((applied_count + 1))
       continue
     fi
@@ -153,7 +153,7 @@ PYEOF
 
 Task: $TASK_LINE
 
-Apply the suggestion written for this task in ideas.md:
+Apply the suggestion written for this task in new-projects.md:
 $IDEAS_CONTENT
 
 Follow these steps:
@@ -194,7 +194,7 @@ with open(config_file, 'w') as f:
     f.writelines(result)
 PYEOF
 
-      # Mark idea as [x] in ideas.md and remove sub-lines
+      # Mark idea as [x] in new-projects.md and remove sub-lines
       python3 - "$IDEAS_FILE" "$TASK_LINE" <<'PYEOF'
 import sys
 
@@ -220,10 +220,10 @@ with open(sys.argv[1], 'w') as f:
     f.writelines(result)
 PYEOF
 
-      echo "[ideas] project '$PROJECT_SLUG' created and added to config.sh" >> "$LOG"
+      echo "[new-projects] project '$PROJECT_SLUG' created and added to config.sh" >> "$LOG"
       applied_count=$((applied_count + 1))
     else
-      echo "[ideas] ERROR: failed to create '$PROJECT_SLUG' (exit code: $?)" >> "$LOG"
+      echo "[new-projects] ERROR: failed to create '$PROJECT_SLUG' (exit code: $?)" >> "$LOG"
       error_count=$((error_count + 1))
     fi
   done <<< "$IDEA_ITEMS"

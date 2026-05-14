@@ -213,7 +213,7 @@ crontab -e
 
 ## Sifirdan Yeni Proje Olusturmak
 
-`ideas.md` dosyasina fikir yaz:
+`new-projects.md` dosyasina fikir yaz:
 
 ```
 - [ ] proje-adi: Projenin kisa aciklamasi
@@ -251,7 +251,7 @@ PROJECTS=(
   scripts/run.sh         — cron'un çalıştırdığı ana script (lock + log rotasyonu)
   scripts/check-tasks.sh — öneri üretme
   scripts/apply-tasks.sh — onaylananları uygulama
-  ideas.md               — sifirdan proje fikirleri
+  new-projects.md               — sifirdan proje fikirleri
   kullanim-kilavuzu.md   — bu dosya
   logs/                  — çalışma kayıtları (30 gün tutulur)
 
